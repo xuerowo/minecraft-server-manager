@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Settings API</title>
+    <script>
+        function testSettings() {
+            try {
+                if (typeof window.electronAPI !== 'undefined') {
+                    console.log('electronAPI available:', Object.keys(window.electronAPI));
+                    
+                    // 測試載入設定
+                    window.electronAPI.loadSettings().then(settings => {
+                        console.log('Settings loaded:', settings);
+                        alert('設定載入成功！請查看開發者工具控制台');
+                    }).catch(error => {
+                        console.error('載入設定失敗:', error);
+                        alert('載入設定失敗: ' + error.message);
+                    });
+                } else {
+                    console.error('electronAPI not available');
+                    alert('electronAPI 不可用');
+                }
+            } catch (error) {
+                console.error('測試錯誤:', error);
+                alert('測試錯誤: ' + error.message);
+            }
+        }
+
+        function testSaveSettings() {
+            try {
+                const testSettings = {
+                    theme: 'dark',
+                    language: 'zh-TW',
+                    enableAnimations: true,
+                    autoSaveInterval: 5,
+                    defaultServerPath: 'C:\\test\\server',
+                    javaPath: 'C:\\Program Files\\Java\\bin',
+                    backupPath: 'C:\\backups'
+                };
+                
+                window.electronAPI.saveSettings(testSettings).then(result => {
+                    console.log('Settings saved:', result);
+                    alert('設定儲存成功！');
+                }).catch(error => {
+                    console.error('儲存設定失敗:', error);
+                    alert('儲存設定失敗: ' + error.message);
+                });
+            } catch (error) {
+                console.error('測試錯誤:', error);
+                alert('測試錯誤: ' + error.message);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>測試設定 API 方法</h1>
+    <button onclick="testSettings()">測試載入設定</button>
+    <button onclick="testSaveSettings()">測試儲存設定</button>
+</body>
+</html>

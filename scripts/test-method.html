@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Electron API</title>
+    <script>
+        function testMethod() {
+            try {
+                if (typeof window.electronAPI !== 'undefined') {
+                    console.log('electronAPI available:', Object.keys(window.electronAPI));
+                    
+                    if (typeof window.electronAPI.getServerListFromPath === 'function') {
+                        console.log('getServerListFromPath method is available!');
+                        alert('方法可用！請查看開發者工具控制台');
+                    } else {
+                        console.error('getServerListFromPath method NOT found');
+                        alert('方法不可用，請重啟應用程式');
+                    }
+                } else {
+                    console.error('electronAPI not available');
+                    alert('electronAPI 不可用');
+                }
+            } catch (error) {
+                console.error('測試錯誤:', error);
+                alert('測試錯誤: ' + error.message);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>測試 Electron API 方法</h1>
+    <button onclick="testMethod()">測試 getServerListFromPath 方法</button>
+</body>
+</html>

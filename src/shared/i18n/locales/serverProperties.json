@@ -1,0 +1,285 @@
+{
+  "serverProperties": {
+    "categories": {
+      "BASIC": "基本設定",
+      "WORLD": "世界設定",
+      "GAMEPLAY": "遊戲設定",
+      "MULTIPLAYER": "多人遊戲",
+      "PERFORMANCE": "效能設定",
+      "SECURITY": "安全設定",
+      "ADVANCED": "進階設定"
+    },
+    "properties": {
+      "server-port": {
+        "label": "伺服器端口",
+        "description": "伺服器監聽的端口號"
+      },
+      "motd": {
+        "label": "每日訊息 (MOTD)",
+        "description": "玩家連接時顯示的訊息"
+      },
+      "server-ip": {
+        "label": "伺服器IP",
+        "description": "將伺服器與一個特定IP綁定。強烈建議留空該屬性值！"
+      },
+      "query.port": {
+        "label": "查詢端口",
+        "description": "設定監聽伺服器的埠號（參見 enable-query）"
+      },
+      "max-build-height": {
+        "label": "最大建造高度",
+        "description": "玩家在遊戲中能夠建造的最大高度"
+      },
+      "max-world-size": {
+        "label": "最大世界大小",
+        "description": "設定可讓世界邊界獲得的最大半徑值，單位為方塊"
+      },
+      "max-players": {
+        "label": "最大玩家數",
+        "description": "同時允許的最大玩家數量"
+      },
+      "online-mode": {
+        "label": "線上模式",
+        "description": "是否驗證玩家的 Minecraft 帳號"
+      },
+      "white-list": {
+        "label": "白名單",
+        "description": "是否啟用白名單模式"
+      },
+      "level-name": {
+        "label": "世界名稱",
+        "description": "世界資料夾的名稱"
+      },
+      "level-seed": {
+        "label": "世界種子",
+        "description": "生成世界使用的種子"
+      },
+      "level-type": {
+        "label": "世界類型",
+        "description": "世界生成的類型",
+        "options": {
+          "minecraft:normal": "普通",
+          "minecraft:flat": "超平坦",
+          "minecraft:large_biomes": "巨型生態群系",
+          "minecraft:amplified": "放大化"
+        }
+      },
+      "generator-settings": {
+        "label": "生成器設定",
+        "description": "用於自訂世界的生成。詳見超平坦世界和自訂了解正確的設定及例子"
+      },
+      "allow-nether": {
+        "label": "允許地獄",
+        "description": "允許玩家進入地獄"
+      },
+      "spawn-npcs": {
+        "label": "生成村民",
+        "description": "決定是否生成村民"
+      },
+      "difficulty": {
+        "label": "遊戲難度",
+        "description": "遊戲的難度等級",
+        "options": {
+          "0": "和平 (0)",
+          "1": "簡單 (1)",
+          "2": "普通 (2)",
+          "3": "困難 (3)"
+        }
+      },
+      "gamemode": {
+        "label": "預設遊戲模式",
+        "description": "新玩家的預設遊戲模式",
+        "options": {
+          "0": "生存模式 (0)",
+          "1": "創造模式 (1)",
+          "2": "冒險模式 (2)",
+          "3": "觀察者模式 (3)"
+        }
+      },
+      "force-gamemode": {
+        "label": "強制遊戲模式",
+        "description": "強制玩家使用預設遊戲模式"
+      },
+      "hardcore": {
+        "label": "極限模式",
+        "description": "如果設為 true，伺服器難易度的設定會被忽略並且設為hard（困難），玩家在死後會自動切換至旁觀者模式"
+      },
+      "player-idle-timeout": {
+        "label": "玩家閒置超時",
+        "description": "如果不為0，伺服器將在玩家的空閒時間達到設定的時間（單位為分鐘）時將玩家踢出伺服器"
+      },
+      "function-permission-level": {
+        "label": "函數權限等級",
+        "description": "設定函數的預設權限等級"
+      },
+      "op-permission-level": {
+        "label": "OP權限等級",
+        "description": "設定使用/op指令時OP的權限等級"
+      },
+      "pvp": {
+        "label": "玩家對戰 (PvP)",
+        "description": "是否允許玩家互相攻擊"
+      },
+      "spawn-protection": {
+        "label": "出生點保護",
+        "description": "出生點周圍的保護範圍（方塊）"
+      },
+      "allow-flight": {
+        "label": "允許飛行",
+        "description": "允許玩家在安裝加入飛行功能的mod前提下在生存模式下飛行。允許飛行可能會使惡意破壞者更加常見，因為此設定會使他們更容易達成目的。在創造模式下無作用。false - 不允許飛行。懸空超過5秒的玩家會被踢出伺服器。true - 允許飛行。玩家得以使用任何能飛行的mod飛行。"
+      },
+      "broadcast-console-to-ops": {
+        "label": "向OP廣播控制台",
+        "description": "向所有線上OP發送所執行指令的輸出"
+      },
+      "broadcast-rcon-to-ops": {
+        "label": "向OP廣播RCON",
+        "description": "向所有線上OP發送透過RCON執行的指令的輸出"
+      },
+      "prevent-proxy-connections": {
+        "label": "防止代理連接",
+        "description": "如果伺服器發送的ISP/AS和Mojang的驗證伺服器的不一樣，玩家將會被踢出"
+      },
+      "entity-broadcast-range-percentage": {
+        "label": "實體廣播範圍",
+        "description": "此選項控制實體需要距離玩家有多近才會將資料包發送給用戶端"
+      },
+      "rate-limit": {
+        "label": "速率限制",
+        "description": "設定玩家被踢出伺服器前，可以發送的資料包數量"
+      },
+      "view-distance": {
+        "label": "視距",
+        "description": "伺服器發送給客戶端的區塊數量"
+      },
+      "simulation-distance": {
+        "label": "模擬距離",
+        "description": "伺服器模擬的區塊距離"
+      },
+      "max-tick-time": {
+        "label": "最大 Tick 時間",
+        "description": "伺服器等待 Tick 的最大時間（毫秒）"
+      },
+      "max-chained-neighbor-updates": {
+        "label": "最大連鎖鄰居更新",
+        "description": "限制連鎖NC更新的數量，超過此數量的連鎖NC更新會被跳過"
+      },
+      "sync-chunk-writes": {
+        "label": "同步區塊寫入",
+        "description": "啟用後區塊檔案以同步模式寫入"
+      },
+      "enable-rcon": {
+        "label": "啟用 RCON",
+        "description": "是否啟用遠端控制台"
+      },
+      "rcon.port": {
+        "label": "RCON 端口",
+        "description": "RCON 服務的端口"
+      },
+      "rcon.password": {
+        "label": "RCON 密碼",
+        "description": "RCON 連接密碼"
+      },
+      "enforce-secure-profile": {
+        "label": "強制安全配置檔",
+        "description": "是否強制玩家使用安全配置檔"
+      },
+      "enable-query": {
+        "label": "啟用查詢",
+        "description": "允許使用GameSpy4協議的伺服器監聽器。用於取得伺服器資訊"
+      },
+      "enable-status": {
+        "label": "啟用狀態",
+        "description": "使伺服器在伺服器列表中看起來是「線上」的"
+      },
+      "enable-jmx-monitoring": {
+        "label": "啟用JMX監控",
+        "description": "暴露一個具有對象名net.minecraft.server:type=Server的MBean和兩個屬性averageTickTime和tickTimes用於暴露以毫秒為單位的tick時間"
+      },
+      "enforce-whitelist": {
+        "label": "強制白名單",
+        "description": "在伺服器上強制執行白名單。當啟用後，不在白名單中的使用者將在伺服器重新載入白名單檔案後從伺服器踢出"
+      },
+      "log-ips": {
+        "label": "記錄IP位址",
+        "description": "是否在有新玩家加入遊戲時，在伺服器日誌中記錄其IP位址"
+      },
+      "hide-online-players": {
+        "label": "隱藏線上玩家",
+        "description": "如果設為 true，伺服器端在響應用戶端狀態請求時不會返回線上玩家列表"
+      },
+      "require-resource-pack": {
+        "label": "要求資源包",
+        "description": "當此選項啟用時，玩家會被提示作出選擇（是否啟用伺服器資源包）。如果玩家拒絕則會被伺服器斷開連接"
+      },
+      "resource-pack": {
+        "label": "資源包URI",
+        "description": "可選選項，可輸入指向一個資源包的URI。玩家可選擇是否使用該資源包"
+      },
+      "resource-pack-prompt": {
+        "label": "資源包提示訊息",
+        "description": "可選，用於在使用require-resource-pack時在資源包提示介面顯示自訂資訊"
+      },
+      "resource-pack-sha1": {
+        "label": "資源包SHA1值",
+        "description": "資源包的SHA-1值，必須為小寫十六進制，建議填寫它"
+      },
+      "enable-command-block": {
+        "label": "啟用指令方塊",
+        "description": "是否允許使用指令方塊"
+      },
+      "spawn-animals": {
+        "label": "生成動物",
+        "description": "是否生成動物"
+      },
+      "spawn-monsters": {
+        "label": "生成怪物",
+        "description": "是否生成怪物"
+      },
+      "generate-structures": {
+        "label": "生成結構",
+        "description": "是否生成村莊、地牢等結構"
+      },
+      "use-native-transport": {
+        "label": "使用原生傳輸",
+        "description": "是否使用原生傳輸（Linux 限定）"
+      },
+      "network-compression-threshold": {
+        "label": "網路壓縮閾值",
+        "description": "網路封包壓縮的大小閾值"
+      },
+      "initial-disabled-packs": {
+        "label": "初始停用資料包",
+        "description": "需要在建立世界過程中停用的資料包名稱，以逗號分隔"
+      },
+      "initial-enabled-packs": {
+        "label": "初始啟用資料包",
+        "description": "需要在建立世界過程中啟用的資料包名稱，以逗號分隔"
+      },
+      "text-filtering-config": {
+        "label": "文字過濾配置",
+        "description": "伺服器中需要被屏蔽的文字"
+      }
+    },
+    "options": {
+      "level-type": {
+        "minecraft:normal": "普通",
+        "minecraft:flat": "超平坦",
+        "minecraft:large_biomes": "巨型生態群系",
+        "minecraft:amplified": "放大化"
+      },
+      "difficulty": {
+        "0": "和平 (0)",
+        "1": "簡單 (1)",
+        "2": "普通 (2)",
+        "3": "困難 (3)"
+      },
+      "gamemode": {
+        "0": "生存模式 (0)",
+        "1": "創造模式 (1)",
+        "2": "冒險模式 (2)",
+        "3": "觀察者模式 (3)"
+      }
+    }
+  }
+}

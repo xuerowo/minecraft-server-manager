@@ -1,0 +1,492 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* 自定義滾動條 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555555;
+}
+
+/* 全域樣式重置 */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Minecraft 風格的字體 */
+.minecraft-font {
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+}
+
+/* 控制台樣式 */
+.console-output {
+  background: #000000;
+  color: #ffffff;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 12px;
+  line-height: 1.4;
+  padding: 8px;
+  border-radius: 4px;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.console-input {
+  background: #1a1a1a;
+  border: 1px solid #333333;
+  color: #ffffff;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 12px;
+  padding: 8px;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.console-input:focus {
+  outline: none;
+  border-color: #00aa00;
+  box-shadow: 0 0 0 2px rgba(0, 170, 0, 0.2);
+}
+
+/* 日誌顏色 */
+.log-info { color: #ffffff; }
+.log-warn { color: #ffff55; }
+.log-error { color: #ff5555; }
+.log-debug { color: #aaaaaa; }
+.log-trace { color: #888888; }
+
+/* 伺服器狀態指示器 */
+.status-indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.status-stopped { background-color: #ff5555; }
+.status-starting { 
+  background-color: #ffff55; 
+  animation: pulse 2s infinite;
+}
+.status-running { background-color: #55ff55; }
+.status-stopping { 
+  background-color: #ff8c00; 
+  animation: pulse 2s infinite;
+}
+
+/* Badge 組件深色主題樣式 */
+.ant-badge-status-text {
+  color: #ffffff !important;
+}
+
+.ant-badge-status-success {
+  background-color: #52c41a !important;
+}
+
+.ant-badge-status-error {
+  background-color: #ff4d4f !important;
+}
+
+.ant-badge-status-warning {
+  background-color: #faad14 !important;
+}
+
+.ant-badge-status-processing {
+  background-color: #1890ff !important;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* 卡片樣式 */
+.server-card {
+  background: #262626;
+  border: 1px solid #333333;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+}
+
+.server-card:hover {
+  border-color: #00aa00;
+  box-shadow: 0 4px 12px rgba(0, 170, 0, 0.15);
+}
+
+.server-card.active {
+  border-color: #00aa00;
+  background: #1f2f1f;
+}
+
+/* 按鈕樣式 */
+.btn-primary {
+  background: #00aa00;
+  border: none;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #00cc00;
+}
+
+.btn-primary:disabled {
+  background: #666666;
+  cursor: not-allowed;
+}
+
+.btn-danger {
+  background: #ff5555;
+  border: none;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+  background: #ff6666;
+}
+
+/* 表單樣式 */
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 4px;
+  color: #cccccc;
+  font-size: 14px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 8px 12px;
+  background: #1a1a1a;
+  border: 1px solid #333333;
+  border-radius: 4px;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #00aa00;
+  box-shadow: 0 0 0 2px rgba(0, 170, 0, 0.2);
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .console-output {
+    font-size: 10px;
+  }
+  
+  .server-card {
+    padding: 12px;
+  }
+}
+
+/* 拖放區域 */
+.drop-zone {
+  border: 2px dashed #333333;
+  border-radius: 8px;
+  padding: 40px;
+  text-align: center;
+  color: #999999;
+  transition: all 0.3s ease;
+}
+
+.drop-zone.drag-over {
+  border-color: #00aa00;
+  color: #00aa00;
+  background: rgba(0, 170, 0, 0.1);
+}
+
+/* 載入動畫 */
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.spinner {
+  border: 3px solid #333;
+  border-top: 3px solid #00aa00;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Server Properties 編輯器樣式 */
+.server-properties-tabs .ant-tabs-tab {
+  @apply bg-gray-800 border border-gray-600;
+}
+
+.server-properties-tabs .ant-tabs-tab:hover {
+  @apply bg-gray-700;
+}
+
+.server-properties-tabs .ant-tabs-tab-active {
+  @apply bg-minecraft-green text-black;
+}
+
+.server-properties-tabs .ant-tabs-content-holder {
+  @apply bg-gray-800 rounded-b-lg p-6;
+}
+
+.server-properties-tabs .ant-tabs-tabpane {
+  @apply text-white;
+}
+
+/* 表單樣式優化 */
+.ant-form-item-label > label {
+  @apply text-gray-200;
+}
+
+.ant-form-item-explain,
+.ant-form-item-extra {
+  @apply text-gray-400;
+}
+
+/* 輸入框樣式 */
+.ant-input,
+.ant-input-number-input,
+.ant-select-selector {
+  @apply bg-gray-700 border-gray-600 text-white;
+}
+
+.ant-input:focus,
+.ant-input-number-focused .ant-input-number-input,
+.ant-select-focused .ant-select-selector {
+  @apply border-minecraft-green shadow-none;
+  box-shadow: 0 0 0 2px rgba(0, 170, 0, 0.2) !important;
+}
+
+.ant-input::placeholder,
+.ant-input-number-input::placeholder {
+  @apply text-gray-500;
+}
+
+/* Switch 樣式 */
+.ant-switch-checked {
+  @apply bg-minecraft-green;
+}
+
+/* Select 下拉選單樣式 */
+.ant-select-dropdown {
+  @apply bg-gray-800 border-gray-600;
+}
+
+.ant-select-item-option {
+  @apply text-white;
+}
+
+.ant-select-item-option-selected {
+  @apply bg-minecraft-green text-black;
+}
+
+.ant-select-item-option:hover {
+  @apply bg-gray-700;
+}
+
+/* Tooltip 樣式 */
+.ant-tooltip-inner {
+  @apply bg-gray-800 text-white border border-gray-600;
+}
+
+.ant-tooltip-arrow-content {
+  @apply bg-gray-800 border-gray-600;
+}
+
+/* Alert 組件樣式 */
+.ant-alert-warning {
+  @apply bg-yellow-900 border-yellow-700;
+}
+
+.ant-alert-warning .ant-alert-message,
+.ant-alert-warning .ant-alert-description {
+  @apply text-yellow-100;
+}
+
+.ant-alert-info {
+  @apply bg-blue-900 border-blue-700;
+}
+
+.ant-alert-info .ant-alert-message,
+.ant-alert-info .ant-alert-description {
+  @apply text-blue-100;
+}
+
+/* Modal 組件深色主題樣式 - 匹配應用程式原有配色 */
+.ant-modal-mask {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+}
+
+.ant-modal-wrap {
+  background-color: transparent !important;
+}
+
+.ant-modal-content {
+  background-color: #262626 !important;
+  border: 1px solid #333333 !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5) !important;
+}
+
+.ant-modal-header {
+  background-color: #262626 !important;
+  border-bottom: 1px solid #333333 !important;
+}
+
+.ant-modal-title {
+  color: #ffffff !important;
+}
+
+.ant-modal-body {
+  background-color: #262626 !important;
+  color: #ffffff !important;
+}
+
+.ant-modal-footer {
+  background-color: #262626 !important;
+  border-top: 1px solid #333333 !important;
+}
+
+/* Modal 確認對話框樣式 */
+.ant-modal-confirm {
+  .ant-modal-content {
+    background-color: #262626 !important;
+  }
+}
+
+.ant-modal-confirm .ant-modal-body {
+  background-color: #262626 !important;
+  color: #ffffff !important;
+}
+
+.ant-modal-confirm .ant-modal-confirm-title {
+  color: #ffffff !important;
+}
+
+.ant-modal-confirm .ant-modal-confirm-content {
+  color: #cccccc !important;
+}
+
+.ant-modal-confirm .ant-modal-confirm-btns {
+  margin-top: 16px;
+}
+
+/* Modal 按鈕樣式 - 匹配應用程式風格 */
+.ant-modal-footer .ant-btn {
+  background-color: #333333 !important;
+  border-color: #555555 !important;
+  color: #ffffff !important;
+}
+
+.ant-modal-footer .ant-btn:hover {
+  background-color: #555555 !important;
+  border-color: #666666 !important;
+  color: #ffffff !important;
+}
+
+.ant-modal-footer .ant-btn-primary {
+  background-color: #00aa00 !important;
+  border-color: #00aa00 !important;
+  color: #ffffff !important;
+}
+
+.ant-modal-footer .ant-btn-primary:hover {
+  background-color: #00cc00 !important;
+  border-color: #00cc00 !important;
+  color: #ffffff !important;
+}
+
+.ant-modal-footer .ant-btn-dangerous {
+  background-color: #ff5555 !important;
+  border-color: #ff5555 !important;
+  color: #ffffff !important;
+}
+
+.ant-modal-footer .ant-btn-dangerous:hover {
+  background-color: #ff6666 !important;
+  border-color: #ff6666 !important;
+  color: #ffffff !important;
+}
+
+/* 確認對話框按鈕 */
+.ant-modal-confirm-btns .ant-btn {
+  background-color: #333333 !important;
+  border-color: #555555 !important;
+  color: #ffffff !important;
+}
+
+.ant-modal-confirm-btns .ant-btn:hover {
+  background-color: #555555 !important;
+  border-color: #666666 !important;
+  color: #ffffff !important;
+}
+
+.ant-modal-confirm-btns .ant-btn-primary {
+  background-color: #ff5555 !important;
+  border-color: #ff5555 !important;
+  color: #ffffff !important;
+}
+
+.ant-modal-confirm-btns .ant-btn-primary:hover {
+  background-color: #ff6666 !important;
+  border-color: #ff6666 !important;
+  color: #ffffff !important;
+}

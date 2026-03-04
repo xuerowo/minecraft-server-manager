@@ -1,0 +1,285 @@
+{
+  "serverProperties": {
+    "categories": {
+      "BASIC": "Basic Settings",
+      "WORLD": "World Settings",
+      "GAMEPLAY": "Gameplay Settings",
+      "MULTIPLAYER": "Multiplayer Settings",
+      "PERFORMANCE": "Performance Settings",
+      "SECURITY": "Security Settings",
+      "ADVANCED": "Advanced Settings"
+    },
+    "properties": {
+      "server-port": {
+        "label": "Server Port",
+        "description": "The port the server listens on"
+      },
+      "motd": {
+        "label": "Message of the Day (MOTD)",
+        "description": "Message displayed when players connect"
+      },
+      "server-ip": {
+        "label": "Server IP",
+        "description": "Bind the server to a specific IP. Strongly recommended to leave this property empty!"
+      },
+      "query.port": {
+        "label": "Query Port",
+        "description": "Set the port for the server listener (see enable-query)"
+      },
+      "max-build-height": {
+        "label": "Max Build Height",
+        "description": "Maximum height players can build in the game"
+      },
+      "max-world-size": {
+        "label": "Max World Size",
+        "description": "Set the maximum radius for the world border, in blocks"
+      },
+      "max-players": {
+        "label": "Max Players",
+        "description": "Maximum number of players allowed simultaneously"
+      },
+      "online-mode": {
+        "label": "Online Mode",
+        "description": "Whether to verify players' Minecraft accounts"
+      },
+      "white-list": {
+        "label": "Whitelist",
+        "description": "Whether to enable whitelist mode"
+      },
+      "level-name": {
+        "label": "World Name",
+        "description": "Name of the world folder"
+      },
+      "level-seed": {
+        "label": "World Seed",
+        "description": "Seed used to generate the world"
+      },
+      "level-type": {
+        "label": "World Type",
+        "description": "Type of world generation",
+        "options": {
+          "minecraft:normal": "Normal",
+          "minecraft:flat": "Flat",
+          "minecraft:large_biomes": "Large Biomes",
+          "minecraft:amplified": "Amplified"
+        }
+      },
+      "generator-settings": {
+        "label": "Generator Settings",
+        "description": "Settings used to customize world generation. See superflat and customized for proper settings and examples"
+      },
+      "allow-nether": {
+        "label": "Allow Nether",
+        "description": "Allow players to enter the Nether"
+      },
+      "spawn-npcs": {
+        "label": "Spawn NPCs",
+        "description": "Whether to spawn villagers"
+      },
+      "difficulty": {
+        "label": "Game Difficulty",
+        "description": "Difficulty level of the game",
+        "options": {
+          "0": "Peaceful (0)",
+          "1": "Easy (1)",
+          "2": "Normal (2)",
+          "3": "Hard (3)"
+        }
+      },
+      "gamemode": {
+        "label": "Default Game Mode",
+        "description": "Default game mode for new players",
+        "options": {
+          "0": "Survival (0)",
+          "1": "Creative (1)",
+          "2": "Adventure (2)",
+          "3": "Spectator (3)"
+        }
+      },
+      "force-gamemode": {
+        "label": "Force Game Mode",
+        "description": "Force players to use the default game mode"
+      },
+      "hardcore": {
+        "label": "Hardcore Mode",
+        "description": "If set to true, the server difficulty setting is ignored and set to hard, and players will be set to spectator mode upon death"
+      },
+      "player-idle-timeout": {
+        "label": "Player Idle Timeout",
+        "description": "If not 0, players will be kicked from the server if they are idle for more than that many minutes"
+      },
+      "function-permission-level": {
+        "label": "Function Permission Level",
+        "description": "Sets the default permission level for functions"
+      },
+      "op-permission-level": {
+        "label": "OP Permission Level",
+        "description": "Sets the permission level for OPs when using the /op command"
+      },
+      "pvp": {
+        "label": "Player vs Player (PvP)",
+        "description": "Whether to allow players to attack each other"
+      },
+      "spawn-protection": {
+        "label": "Spawn Protection",
+        "description": "Protection radius around spawn (blocks)"
+      },
+      "allow-flight": {
+        "label": "Allow Flight",
+        "description": "Allow players to fly in survival mode if they have a mod that adds flight. Allowing flight may make griefers more common, as it will make their job easier. Has no effect in creative mode. false - Flight is not allowed. Players flying for more than 5 seconds will be kicked. true - Flight is allowed. Players can use any flight-enabling mod to fly."
+      },
+      "broadcast-console-to-ops": {
+        "label": "Broadcast Console to OPs",
+        "description": "Send output of executed commands to all online OPs"
+      },
+      "broadcast-rcon-to-ops": {
+        "label": "Broadcast RCON to OPs",
+        "description": "Send output of commands executed via RCON to all online OPs"
+      },
+      "prevent-proxy-connections": {
+        "label": "Prevent Proxy Connections",
+        "description": "If the ISP/AS sent by the server is different from Mojang's authentication server, players will be kicked"
+      },
+      "entity-broadcast-range-percentage": {
+        "label": "Entity Broadcast Range",
+        "description": "This option controls how close entities need to be to players before data packets are sent to clients"
+      },
+      "rate-limit": {
+        "label": "Rate Limit",
+        "description": "Sets the number of packets a player can send before being kicked from the server"
+      },
+      "view-distance": {
+        "label": "View Distance",
+        "description": "Number of chunks sent to clients by the server"
+      },
+      "simulation-distance": {
+        "label": "Simulation Distance",
+        "description": "Chunk distance simulated by the server"
+      },
+      "max-tick-time": {
+        "label": "Max Tick Time",
+        "description": "Maximum time (milliseconds) the server waits for a tick"
+      },
+      "max-chained-neighbor-updates": {
+        "label": "Max Chained Neighbor Updates",
+        "description": "Limits the number of chained NC updates; chained NC updates exceeding this number will be skipped"
+      },
+      "sync-chunk-writes": {
+        "label": "Sync Chunk Writes",
+        "description": "When enabled, chunk files are written in synchronous mode"
+      },
+      "enable-rcon": {
+        "label": "Enable RCON",
+        "description": "Whether to enable remote console"
+      },
+      "rcon.port": {
+        "label": "RCON Port",
+        "description": "Port for RCON service"
+      },
+      "rcon.password": {
+        "label": "RCON Password",
+        "description": "Password for RCON connection"
+      },
+      "enforce-secure-profile": {
+        "label": "Enforce Secure Profile",
+        "description": "Whether to force players to use secure profiles"
+      },
+      "enable-query": {
+        "label": "Enable Query",
+        "description": "Allow server listener using GameSpy4 protocol. Used to get server information"
+      },
+      "enable-status": {
+        "label": "Enable Status",
+        "description": "Makes the server appear as \"online\" on the server list"
+      },
+      "enable-jmx-monitoring": {
+        "label": "Enable JMX Monitoring",
+        "description": "Exposes an MBean with object name net.minecraft.server:type=Server and two attributes averageTickTime and tickTimes for exposing tick times in milliseconds"
+      },
+      "enforce-whitelist": {
+        "label": "Enforce Whitelist",
+        "description": "Enforce the whitelist on the server. When enabled, users not on the whitelist will be kicked from the server after the server reloads the whitelist file"
+      },
+      "log-ips": {
+        "label": "Log IP Addresses",
+        "description": "Whether to log players' IP addresses in server logs when they join the game"
+      },
+      "hide-online-players": {
+        "label": "Hide Online Players",
+        "description": "If set to true, the server will not return the online player list when responding to client status requests"
+      },
+      "require-resource-pack": {
+        "label": "Require Resource Pack",
+        "description": "When this option is enabled, players will be prompted to make a choice (whether to enable the server resource pack). Players who refuse will be disconnected from the server"
+      },
+      "resource-pack": {
+        "label": "Resource Pack URI",
+        "description": "Optional option, can enter a URI pointing to a resource pack. Players can choose whether to use this resource pack"
+      },
+      "resource-pack-prompt": {
+        "label": "Resource Pack Prompt",
+        "description": "Optional, used to display custom information on the resource pack prompt interface when using require-resource-pack"
+      },
+      "resource-pack-sha1": {
+        "label": "Resource Pack SHA1",
+        "description": "SHA-1 value of the resource pack, must be lowercase hexadecimal, recommended to fill it"
+      },
+      "enable-command-block": {
+        "label": "Enable Command Block",
+        "description": "Whether to allow the use of command blocks"
+      },
+      "spawn-animals": {
+        "label": "Spawn Animals",
+        "description": "Whether to spawn animals"
+      },
+      "spawn-monsters": {
+        "label": "Spawn Monsters",
+        "description": "Whether to spawn monsters"
+      },
+      "generate-structures": {
+        "label": "Generate Structures",
+        "description": "Whether to generate villages, dungeons, and other structures"
+      },
+      "use-native-transport": {
+        "label": "Use Native Transport",
+        "description": "Whether to use native transport (Linux only)"
+      },
+      "network-compression-threshold": {
+        "label": "Network Compression Threshold",
+        "description": "Size threshold for network packet compression"
+      },
+      "initial-disabled-packs": {
+        "label": "Initially Disabled Packs",
+        "description": "Names of data packs that need to be disabled during world creation, comma separated"
+      },
+      "initial-enabled-packs": {
+        "label": "Initially Enabled Packs",
+        "description": "Names of data packs that need to be enabled during world creation, comma separated"
+      },
+      "text-filtering-config": {
+        "label": "Text Filtering Config",
+        "description": "Text that needs to be filtered in the server"
+      }
+    },
+    "options": {
+      "level-type": {
+        "minecraft:normal": "Normal",
+        "minecraft:flat": "Flat",
+        "minecraft:large_biomes": "Large Biomes",
+        "minecraft:amplified": "Amplified"
+      },
+      "difficulty": {
+        "0": "Peaceful (0)",
+        "1": "Easy (1)",
+        "2": "Normal (2)",
+        "3": "Hard (3)"
+      },
+      "gamemode": {
+        "0": "Survival (0)",
+        "1": "Creative (1)",
+        "2": "Adventure (2)",
+        "3": "Spectator (3)"
+      }
+    }
+  }
+}
