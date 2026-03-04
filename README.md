@@ -2,8 +2,6 @@
 
 一個基於 Electron 的 Minecraft 伺服器管理工具，提供直觀的圖形介面來管理您的 Minecraft 伺服器。包含伺服器控制台、設定編輯、地圖管理、玩家管理等豐富功能。
 
-![專案截圖](assets/screenshot.png) *(如有截圖請替換此處)*
-
 ## 🚀 主要功能
 
 - **伺服器儀表板**：一目了然地查看所有伺服器的運行狀態、版本、端口及線上人數。
@@ -14,6 +12,30 @@
 - **玩家管理**：輕鬆管理 OP 權限、白名單及封禁列表。
 - **多語言支援**：提供繁體中文、簡體中文及英文介面。
 
+## 💻 如何開啟應用程式
+
+### Windows 用戶 (快速啟動)
+如果您已經安裝了 [Node.js](https://nodejs.org/)，可以直接點擊專案根目錄下的：
+- **`start-dev.bat`**：啟動開發伺服器並開啟應用程式。
+
+### 開發者啟動方式
+1. **安裝依賴** (僅第一次需要)：
+   ```bash
+   npm install
+   ```
+
+2. **啟動開發模式**：
+   ```bash
+   npm run dev
+   ```
+   *這將啟動 Vite 開發伺服器。*
+
+3. **啟動 Electron**：
+   在新終端機執行：
+   ```bash
+   npm run electron:dev
+   ```
+
 ## 🛠️ 技術堆疊
 
 - **核心框架**：[Electron](https://www.electronjs.org/)
@@ -22,33 +44,14 @@
 - **UI 組件庫**：[Ant Design (antd)](https://ant.design/)
 - **樣式管理**：[TailwindCSS](https://tailwindcss.com/)
 - **狀態管理**：[Zustand](https://github.com/pmndrs/zustand)
-- **路由管理**：[React Router](https://reactrouter.com/)
 
-## 📦 安裝與開發
+## 📦 構建發行版 (打包成 .exe)
 
-### 前置需求
-
-- [Node.js](https://nodejs.org/) (建議 v18 以上)
-- npm 或 yarn
-
-### 開發模式
-
-1. 安裝依賴：
-   ```bash
-   npm install
-   ```
-
-2. 啟動開發伺服器：
-   ```bash
-   npm run electron:dev
-   ```
-
-### 構建發行版
-
-構建適用於當前作業系統的安裝包：
+如果您想將程式打包成獨立的安裝檔，請執行：
 ```bash
 npm run electron:dist
 ```
+構建完成後的安裝檔將會存放在 `release/` 目錄中。
 
 ## 📂 專案結構
 
@@ -56,7 +59,3 @@ npm run electron:dist
 - `src/renderer`: React 渲染進程代碼（UI 介面、狀態管理）。
 - `src/preload`: 預載腳本，作為主進程與渲染進程的橋樑。
 - `src/shared`: 共享的類型定義、國際化配置（i18n）及常量。
-
-## 📄 授權條款
-
-本專案採用 [MIT License](LICENSE) 授權。
