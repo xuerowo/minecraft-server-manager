@@ -10,6 +10,19 @@ import type {
   BannedIPEntry,
   PlayerInfo
 } from '../main/services/ServerManager';
+
+export type { 
+  ServerInfo, 
+  ServerProperties,
+  PlayerManagementData,
+  PlayerCacheEntry,
+  OpsEntry,
+  WhitelistEntry,
+  BannedPlayerEntry,
+  BannedIPEntry,
+  PlayerInfo
+};
+
 import type { 
   ServerCreationConfig, 
   ServerType, 
@@ -263,6 +276,3 @@ const electronAPI: ElectronAPI = {
 
 // 將 API 暴露給渲染程序
 contextBridge.exposeInMainWorld('electronAPI', electronAPI);
-
-// 類型聲明檔案會需要這個
-export type { ElectronAPI };

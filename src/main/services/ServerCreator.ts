@@ -299,7 +299,7 @@ java -jar forge-installer.jar --installServer
       const configCheckInterval = setInterval(checkAllConfigs, 1000);
 
       // 處理輸出
-      process.stdout.on('data', (data) => {
+      process.stdout.on('data', (data: Buffer) => {
         const output = data.toString();
         console.log('伺服器輸出:', output.trim());
 
@@ -317,17 +317,17 @@ java -jar forge-installer.jar --installServer
         }
       });
 
-      process.stderr.on('data', (data) => {
-        const error = data.toString();
-        console.error('伺服器錯誤:', error.trim());
+      process.stderr.on('data', (data: Buffer) => {
+        const errorOutput = data.toString();
+        console.error('伺服器錯誤:', errorOutput.trim());
 
         // 忽略一些常見的非錯誤訊息
-        if (!error.includes('WARN') && !error.includes('INFO')) {
-          console.error('伺服器嚴重錯誤:', error);
+        if (!errorOutput.includes('WARN') && !errorOutput.includes('INFO')) {
+          console.error('伺服器嚴重錯誤:', errorOutput);
         }
       });
 
-      process.on('close', (code) => {
+      process.on('close', (code: number | null) => {
         clearInterval(configCheckInterval);
 
         if (allConfigsGenerated) {
@@ -349,7 +349,7 @@ java -jar forge-installer.jar --installServer
         }
       });
 
-      process.on('error', (error) => {
+      process.on('error', (error: Error) => {
         clearInterval(configCheckInterval);
         reject(new Error(`啟動伺服器失敗: ${error.message}`));
       });

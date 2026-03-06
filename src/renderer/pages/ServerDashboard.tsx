@@ -165,7 +165,7 @@ export const ServerDashboard: React.FC = () => {
         cancelText: '取消',
         onOk: async () => {
           try {
-            await window.electronAPI.deleteServer(server.id, deleteOptions);
+            await window.electronAPI.deleteServer(server.id);
             message.success(`伺服器 "${server.name}" 已成功刪除`);
             // 重新載入伺服器列表
             const updatedServers = await window.electronAPI.getServerList();
@@ -651,7 +651,7 @@ export const ServerDashboard: React.FC = () => {
               >
                 {availableVersions.map(version => (
                   <Select.Option key={version.id} value={version.id}>
-                    {version.name}
+                    {version.id}
                   </Select.Option>
                 ))}
               </Select>
@@ -694,7 +694,7 @@ export const ServerDashboard: React.FC = () => {
               <label className="block text-sm font-medium mb-2">{t('dashboard.creationProgressLabel')}</label>
               <div className="text-sm text-gray-600">
                 {creationProgress.message}
-                {creationProgress.percentage && ` (${creationProgress.percentage}%)`}
+                {creationProgress.progress !== undefined && ` (${creationProgress.progress}%)`}
               </div>
             </div>
           )}

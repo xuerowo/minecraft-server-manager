@@ -2,7 +2,7 @@ import { ipcMain, dialog, shell, BrowserWindow, Notification } from 'electron';
 import { ServerManager } from '../services/ServerManager';
 import * as fs from 'fs/promises';
 import * as path from 'path';
-import * as AdmZip from 'adm-zip';
+import AdmZip from 'adm-zip';
 
 export function setupIPC(serverManager: ServerManager, mainWindow: BrowserWindow | null): void {
   

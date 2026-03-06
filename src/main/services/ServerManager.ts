@@ -482,7 +482,12 @@ export class ServerManager extends EventEmitter {
       const existingProperties = this.parseProperties(existingContent);
       
       // 合併更新
-      const mergedProperties = { ...existingProperties, ...updates };
+      const mergedProperties: ServerProperties = { ...existingProperties };
+      Object.entries(updates).forEach(([key, value]) => {
+        if (value !== undefined) {
+          mergedProperties[key] = value;
+        }
+      });
       
       // 寫回檔案
       const newContent = this.stringifyProperties(mergedProperties);

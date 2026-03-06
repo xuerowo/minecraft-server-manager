@@ -33,7 +33,7 @@ const AppContent: React.FC = () => {
         const servers = await window.electronAPI.getServerList();
         setServers(servers);
       } catch (error) {
-        message.error(t('server.loadError', '載入伺服器列表失敗'));
+        message.error(t('server.loadError', {}, '載入伺服器列表失敗'));
         console.error('載入伺服器列表失敗:', error);
       }
     };

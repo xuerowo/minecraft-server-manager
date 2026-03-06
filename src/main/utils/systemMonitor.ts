@@ -9,7 +9,7 @@ interface SystemUsage {
 }
 
 export class SystemMonitor {
-  private previousCpuInfo: NodeJS.CpuInfo[] = [];
+  private previousCpuInfo: os.CpuInfo[] = [];
   
   constructor() {
     this.previousCpuInfo = [];

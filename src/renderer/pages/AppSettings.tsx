@@ -27,6 +27,7 @@ import {
 } from '@ant-design/icons';
 import { useI18n } from '../hooks/useI18n';
 import { useI18nContext } from '../components/I18nProvider';
+import type { LanguageCode } from '../../shared/i18n';
 
 const { Title, Text, Paragraph } = Typography;
 const { Option } = Select;

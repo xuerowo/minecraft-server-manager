@@ -185,7 +185,7 @@ export class ServerVersionManager extends EventEmitter {
       throw new Error(`獲取 Mojang 版本清單失敗: ${response.statusText}`);
     }
 
-    const data: MojangVersionManifest = await response.json();
+    const data = await response.json() as MojangVersionManifest;
     
     return data.versions
       .filter(version => version.type === 'release')
@@ -213,7 +213,7 @@ export class ServerVersionManager extends EventEmitter {
         throw new Error(`獲取 Paper 版本清單失敗: ${response.statusText}`);
       }
 
-      const data: PaperVersionResponse = await response.json();
+      const data = await response.json() as PaperVersionResponse;
       console.log('[ServerVersionManager] Paper API 回應:', JSON.stringify(data, null, 2));
       console.log('[ServerVersionManager] data.versions 類型:', typeof data.versions);
       console.log('[ServerVersionManager] data.versions 是否為陣列:', Array.isArray(data.versions));
@@ -341,7 +341,7 @@ export class ServerVersionManager extends EventEmitter {
       throw new Error(`獲取 Fabric 版本清單失敗: ${response.statusText}`);
     }
 
-    const data = await response.json();
+    const data = await response.json() as any[];
     
     return data
       .filter((version: any) => version.stable)
@@ -427,7 +427,7 @@ export class ServerVersionManager extends EventEmitter {
       throw new Error(`獲取 Paper ${version} 構建列表失敗: ${buildsResponse.statusText}`);
     }
 
-    const builds: PaperBuildsResponse = await buildsResponse.json();
+    const builds = await buildsResponse.json() as PaperBuildsResponse;
     const stableBuild = builds.builds.find(build => build.channel === 'STABLE') || builds.builds[0];
 
     if (!stableBuild || !stableBuild.downloads['server:default']) {
@@ -454,7 +454,7 @@ export class ServerVersionManager extends EventEmitter {
       throw new Error(`獲取 Fabric Loader 版本失敗: ${loaderResponse.statusText}`);
     }
 
-    const loaders = await loaderResponse.json();
+    const loaders = await loaderResponse.json() as any[];
     const latestLoader = loaders[0];
 
     // 獲取最新的 Installer 版本
@@ -468,7 +468,7 @@ export class ServerVersionManager extends EventEmitter {
       throw new Error(`獲取 Fabric Installer 版本失敗: ${installerResponse.statusText}`);
     }
 
-    const installers = await installerResponse.json();
+    const installers = await installerResponse.json() as any[];
     const latestInstaller = installers[0];
 
     return `https://meta.fabricmc.net/v2/versions/loader/${version}/${latestLoader.version}/${latestInstaller.version}/server/jar`;
@@ -491,7 +491,7 @@ export class ServerVersionManager extends EventEmitter {
       throw new Error(`獲取版本清單失敗: ${manifestResponse.statusText}`);
     }
 
-    const manifest: MojangVersionManifest = await manifestResponse.json();
+    const manifest = await manifestResponse.json() as MojangVersionManifest;
     const versionInfo = manifest.versions.find(v => v.id === version);
 
     if (!versionInfo) {
@@ -508,7 +508,7 @@ export class ServerVersionManager extends EventEmitter {
       throw new Error(`獲取版本資訊失敗: ${versionResponse.statusText}`);
     }
 
-    return await versionResponse.json();
+    return await versionResponse.json() as any;
   }
 
   private getCached(key: string): any {

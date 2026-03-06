@@ -39,7 +39,8 @@ import type {
   OpsEntry,
   WhitelistEntry,
   BannedPlayerEntry,
-  BannedIPEntry 
+  BannedIPEntry,
+  PlayerInfo 
 } from '../../preload/preload';
 
 const { Title, Text } = Typography;
@@ -212,7 +213,7 @@ export const PlayerManager: React.FC = () => {
       
       // 先檢查玩家是否已在usercache中
       let playerUuid = '';
-      const cachedPlayer = playerManagementData?.players.find(p => p.username === username);
+      const cachedPlayer = playerManagementData?.players.find((p: PlayerInfo) => p.username === username);
       if (cachedPlayer) {
         playerUuid = cachedPlayer.uuid;
       }

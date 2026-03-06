@@ -55,7 +55,8 @@ export class I18nManager {
       const remainingKey = key.substring('serverProperties.properties.'.length);
       
       // Check if this is a server property key that contains dots
-      const serverProps = this.resources[this.currentLanguage]?.serverProperties?.properties;
+      const resources = this.resources[this.currentLanguage] as any;
+      const serverProps = resources?.serverProperties?.properties;
       if (serverProps) {
         // Look for exact match first (for keys with dots like 'query.port')
         for (const propKey of Object.keys(serverProps)) {
