@@ -156,7 +156,7 @@ export const AppSettings: React.FC = () => {
                         <div>
                           <Text strong>{t('about.developer')}</Text>
                           <br />
-                          <Text>Claude Code</Text>
+                          <Text>AI</Text>
                         </div>
                       </div>
                     </Col>

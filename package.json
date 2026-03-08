@@ -26,7 +26,7 @@
     "react",
     "typescript"
   ],
-  "author": "您的名字",
+  "author": "AI",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.19.13",
