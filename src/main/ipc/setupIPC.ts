@@ -28,9 +28,17 @@ export function setupIPC(serverManager: ServerManager, mainWindow: BrowserWindow
 
   ipcMain.handle('server:stop', async (_event, serverId: string) => {
     try {
-      const server = serverManager.getServer(serverId);
+      console.log(`[IPC] 收到停止伺服器請求: ${serverId}`);
+      let server = serverManager.getServer(serverId);
+      if (!server) {
+        console.log(`[IPC] 伺服器實例不存在，嘗試載入: ${serverId}`);
+        server = await serverManager.loadServer(serverId);
+      }
+      
       if (server) {
         await server.stop();
+      } else {
+        console.error(`[IPC] 無法獲取伺服器實例: ${serverId}`);
       }
     } catch (error) {
       console.error(`停止伺服器 ${serverId} 失敗:`, error);

@@ -258,7 +258,71 @@
       },
       "text-filtering-config": {
         "label": "Text Filtering Config",
-        "description": "Text that needs to be filtered in the server"
+        "description": "Text filtering configuration endpoint"
+      },
+      "accepts-transfers": {
+        "label": "Accepts Transfers",
+        "description": "Accepts incoming player transfers from other servers"
+      },
+      "bug-report-link": {
+        "label": "Bug Report Link",
+        "description": "URL where players can report bugs"
+      },
+      "enable-code-of-conduct": {
+        "label": "Enable Code of Conduct",
+        "description": "Require players to accept the code of conduct"
+      },
+      "pause-when-empty-seconds": {
+        "label": "Pause When Empty (s)",
+        "description": "Pause the server after empty for this many seconds"
+      },
+      "region-file-compression": {
+        "label": "Region File Compression",
+        "description": "Compression algorithm for region files"
+      },
+      "resource-pack-id": {
+        "label": "Resource Pack ID",
+        "description": "Unique identifier for the resource pack"
+      },
+      "status-heartbeat-interval": {
+        "label": "Status Heartbeat Interval",
+        "description": "Status heartbeat interval in milliseconds"
+      },
+      "text-filtering-version": {
+        "label": "Text Filtering Version",
+        "description": "Text filtering version"
+      },
+      "management-server-enabled": {
+        "label": "Management Server Enabled",
+        "description": "Enable the management server"
+      },
+      "management-server-host": {
+        "label": "Management Server Host",
+        "description": "Management server host"
+      },
+      "management-server-port": {
+        "label": "Management Server Port",
+        "description": "Management server port"
+      },
+      "management-server-secret": {
+        "label": "Management Server Secret",
+        "description": "Management server secret key"
+      },
+      "management-server-allowed-origins": {
+        "label": "Management Server Allowed Origins",
+        "description": "CORS allowed origins for management server"
+      },
+      "management-server-tls-enabled": {
+        "label": "Management Server TLS Enabled",
+        "description": "Enable TLS for management server"
+      },
+      "management-server-tls-keystore": {
+        "label": "Management Server TLS Keystore",
+        "description": "TLS keystore path for management server"
+      },
+      "management-server-tls-keystore-password": {
+        "label": "Management Server TLS Keystore Password",
+        "description": "TLS keystore password for management server"
       }
     },
     "options": {
@@ -279,6 +343,11 @@
         "1": "Creative (1)",
         "2": "Adventure (2)",
         "3": "Spectator (3)"
+      },
+      "region-file-compression": {
+        "deflate": "Deflate (Default, space efficient)",
+        "lz4": "LZ4 (Fast compression)",
+        "none": "None (Large files)"
       }
     }
   }

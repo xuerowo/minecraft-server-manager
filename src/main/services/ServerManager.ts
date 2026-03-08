@@ -122,28 +122,91 @@ export class ServerInstance extends EventEmitter {
   }
 
   public async stop(): Promise<void> {
+    console.log(`[ServerInstance] 呼叫停止伺服器: ${this.info.id}, 當前狀態: ${this.info.status}`);
+    
+    // 如果已經是停止狀態，確保 process 為 null
     if (this.info.status === 'stopped') {
+      console.log(`[ServerInstance] 伺服器 ${this.info.id} 已經停止，確保清理行程`);
+      this.process = null;
       return;
     }
 
     this.info.status = 'stopping';
     this.emit('statusChanged', this.info);
 
+    // 強制清理狀態的保險
+    const forceCleanup = () => {
+      if (this.info.status !== 'stopped') {
+        console.log(`[ServerInstance] 伺服器 ${this.info.id} 強制同步為停止狀態`);
+        this.info.status = 'stopped';
+        this.emit('statusChanged', this.info);
+        this.process = null;
+      }
+    };
+
+    if (!this.process) {
+      console.log(`[ServerInstance] 伺服器 ${this.info.id} 沒有執行中的行程，直接更新狀態`);
+      forceCleanup();
+      return;
+    }
+
+    // 啟動超時保險
+    const timeout = 10000; 
+    const timer = setTimeout(() => {
+      console.log(`[ServerInstance] 伺服器 ${this.info.id} 停止超時，執行強制結束`);
+      this.killProcess();
+      forceCleanup();
+    }, timeout);
+
+    // 當進程結束時清除計時器
     if (this.process) {
-      // 發送停止指令
-      this.sendCommand('stop');
-      
-      // 等待優雅停止，如果10秒後還沒停止就強制終止
-      setTimeout(() => {
-        if (this.process && !this.process.killed) {
-          this.process.kill('SIGTERM');
-        }
-      }, 10000);
+      const clearTimer = () => clearTimeout(timer);
+      this.process.once('close', clearTimer);
+      this.process.once('exit', clearTimer);
+    }
+
+    try {
+      if (this.process.stdin && this.process.stdin.writable) {
+        console.log(`[ServerInstance] 向伺服器 ${this.info.id} 發送 stop 指令`);
+        this.process.stdin.write('stop\r\n');
+      } else {
+        console.log(`[ServerInstance] 伺服器 ${this.info.id} stdin 不可用，嘗試 kill`);
+        this.killProcess();
+      }
+    } catch (error) {
+      console.error(`[ServerInstance] 執行停止動作時出錯:`, error);
+      this.killProcess();
+      forceCleanup();
+    }
+  }
+
+  /**
+   * 強制終止行程
+   */
+  private killProcess(): void {
+    if (!this.process || this.process.killed) return;
+    
+    try {
+      if (isWin && this.process.pid) {
+        // Windows 特殊處理：強制結束整個進程樹
+        console.log(`[ServerInstance] Windows 環境，執行 taskkill PID: ${this.process.pid}`);
+        const tk = spawn('taskkill', ['/F', '/T', '/PID', this.process.pid.toString()]);
+        tk.on('error', (err) => {
+          console.error(`[ServerInstance] taskkill 執行錯誤:`, err);
+          try { this.process?.kill(); } catch {}
+        });
+      } else {
+        this.process.kill('SIGKILL');
+      }
+    } catch (e) {
+      console.error(`[ServerInstance] 強制結束行程失敗:`, e);
+      // 最後嘗試普通 kill
+      try { this.process.kill(); } catch {}
     }
   }
 
   public sendCommand(command: string): void {
-    if (this.process && this.info.status === 'running') {
+    if (this.process && (this.info.status === 'running' || this.info.status === 'stopping')) {
       this.process.stdin?.write(`${command}\n`);
       this.emit('commandSent', command);
     }
@@ -219,6 +282,7 @@ export class ServerInstance extends EventEmitter {
 
     this.process.on('close', (code) => {
       const stopMessage = `[SERVER] 伺服器已停止，退出碼: ${code}`;
+      console.log(stopMessage);
       this.logBuffer.push(stopMessage);
       if (this.logBuffer.length > this.maxLogLines) {
         this.logBuffer.shift();
@@ -229,6 +293,15 @@ export class ServerInstance extends EventEmitter {
       this.emit('statusChanged', this.info);
       this.emit('stopped', code);
       this.process = null;
+    });
+
+    this.process.on('exit', (code) => {
+      console.log(`[SERVER] 伺服器行程退出，退出碼: ${code}`);
+      if (this.info.status !== 'stopped') {
+        this.info.status = 'stopped';
+        this.emit('statusChanged', this.info);
+        this.process = null;
+      }
     });
 
     this.process.on('error', (error) => {

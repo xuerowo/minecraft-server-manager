@@ -259,6 +259,70 @@
       "text-filtering-config": {
         "label": "文字過濾配置",
         "description": "伺服器中需要被屏蔽的文字"
+      },
+      "text-filtering-version": {
+        "label": "文字過濾版本",
+        "description": "指定文字過濾系統的版本號"
+      },
+      "accepts-transfers": {
+        "label": "接受伺服器轉移",
+        "description": "如果伺服器應接受來自其他伺服器的連接轉移（即跨服切換），請設為 true"
+      },
+      "bug-report-link": {
+        "label": "錯誤回報連結",
+        "description": "玩家斷線時可以點擊並提交崩潰報告的 URL"
+      },
+      "enable-code-of-conduct": {
+        "label": "啟用行為守則",
+        "description": "是否要求玩家閱讀並同意行為守則（Realm / 外部連結）"
+      },
+      "pause-when-empty-seconds": {
+        "label": "無人時暫停（秒）",
+        "description": "如果伺服器內無人達到該秒數，將暫停世界時間以節省資源（0為不暫停）"
+      },
+      "region-file-compression": {
+        "label": "區塊檔案壓縮",
+        "description": "設定世界區塊儲存的壓縮算法"
+      },
+      "resource-pack-id": {
+        "label": "資源包 UUID",
+        "description": "資源包的唯一識別碼 (UUID)，如果有多個資源包用來防止衝突"
+      },
+      "status-heartbeat-interval": {
+        "label": "狀態心跳間隔",
+        "description": "向伺服器列表發送狀態更新的時間間隔（毫秒）"
+      },
+      "management-server-enabled": {
+        "label": "啟用管理伺服器",
+        "description": "是否啟用伺服器的管理介面API (Management API)"
+      },
+      "management-server-host": {
+        "label": "管理伺服器主機",
+        "description": "管理伺服器綁定的主機位址"
+      },
+      "management-server-port": {
+        "label": "管理伺服器端口",
+        "description": "管理伺服器使用的端口"
+      },
+      "management-server-secret": {
+        "label": "管理伺服器金鑰",
+        "description": "存取管理伺服器的密鑰金鑰，長度必須夠長以確保安全"
+      },
+      "management-server-allowed-origins": {
+        "label": "管理伺服器允許來源",
+        "description": "允許存取管理 API 的來源 (CORS 網域)"
+      },
+      "management-server-tls-enabled": {
+        "label": "管理伺服器啟用 TLS",
+        "description": "管理伺服器是否強制使用 HTTPS 連線"
+      },
+      "management-server-tls-keystore": {
+        "label": "管理伺服器 TLS 憑證",
+        "description": "TLS keystore 的路徑"
+      },
+      "management-server-tls-keystore-password": {
+        "label": "管理伺服器憑證密碼",
+        "description": "TLS keystore 的密碼"
       }
     },
     "options": {
@@ -279,6 +343,11 @@
         "1": "創造模式 (1)",
         "2": "冒險模式 (2)",
         "3": "觀察者模式 (3)"
+      },
+      "region-file-compression": {
+        "deflate": "Deflate (預設, 較省空間)",
+        "lz4": "LZ4 (壓縮快, 較耗空間)",
+        "none": "不壓縮 (佔用極大空間)"
       }
     }
   }
