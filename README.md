@@ -60,3 +60,7 @@ npm run electron:dist
 - `src/renderer`: React 渲染進程代碼（UI 介面、狀態管理）。
 - `src/preload`: 預載腳本，作為主進程與渲染進程的橋樑。
 - `src/shared`: 共享的類型定義、國際化配置（i18n）及常量。
+
+## 📄 許可證 (License)
+
+本專案採用 [MIT License](LICENSE) 進行授權。

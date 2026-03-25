@@ -26,7 +26,7 @@
     "react",
     "typescript"
   ],
-  "author": "AI",
+  "author": "xuerowo",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.19.13",
